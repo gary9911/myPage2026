@@ -1,0 +1,189 @@
+/* 載入字形 */
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap');
+
+body {
+    font-family: "Zen Maru Gothic", sans-serif;
+}
+
+:root {
+    /* --- 專業商務風格：由淺至深 30 組 (Slate Blue Gradient) --- */
+    --mycolor01: #F8FAFC;
+    /* 極淺藍白 - 頁面背景 */
+    --mycolor02: #F0F3F7;
+    --mycolor03: #E9EDF3;
+    --mycolor04: #E1E7EE;
+    --mycolor05: #DAE1EA;
+    --mycolor06: #D2DBE5;
+    --mycolor07: #CBD5E1;
+    /* 淺灰色 - 分割線或邊框 */
+    --mycolor08: #B9C4D2;
+    --mycolor09: #A8B4C4;
+    --mycolor10: #97A4B6;
+    --mycolor11: #8694A7;
+    --mycolor12: #758499;
+    --mycolor13: #64748B;
+    /* 中性藍灰 - 次要資訊 */
+    --mycolor14: #5B6B82;
+    --mycolor15: #536379;
+    --mycolor16: #4B5A70;
+    --mycolor17: #435267;
+    --mycolor18: #3B495E;
+    --mycolor19: #334155;
+    /* 深藍灰 - 標籤或側邊欄 */
+    --mycolor20: #2F3D50;
+    --mycolor21: #2C394C;
+    --mycolor22: #283548;
+    --mycolor23: #253143;
+    --mycolor24: #212D3F;
+    --mycolor25: #1E293B;
+    /* 專業內文色 - 接近黑色的深藍 */
+    --mycolor26: #192335;
+    --mycolor27: #141D2F;
+    --mycolor28: #101729;
+    --mycolor29: #0B1123;
+    --mycolor30: #060B1D;
+    /* 極深藍黑 - 標題或導覽列 */
+}
+
+/* 文字相關，自訂粗細指令。讓主檔內可輸入此指令 */
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+
+.fw-700 {
+    font-weight: 700;
+}
+
+
+.fw-900 {
+    font-weight: 900;
+}
+
+/* 自訂標題格式 */
+/* --- 自訂標題格式擴增 (專業商務版) --- */
+
+/* Title 01: 頁面主標題，強調權威感 */
+.title-01 {
+    font-size: 48px;
+    font-weight: 900;
+    color: var(--mycolor30);
+    /* 最深色 */
+    letter-spacing: 2px;
+    border-left: 10px solid var(--mycolor15);
+    /* 厚實的側邊裝飾 */
+    padding-left: 20px;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+/* Title 02: 章節大標題，簡潔俐落 */
+.title-02 {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--mycolor25);
+    border-bottom: 3px solid var(--mycolor08);
+    /* 穩重的下劃線 */
+    padding-bottom: 8px;
+    margin-bottom: 25px;
+}
+
+/* Title 03: 中標題，帶有輕量背景色塊 */
+.title-03 {
+    font-size: 68px;
+    font-weight: 700;
+    color: var(--mycolor22);
+    background-color: var(--mycolor03);
+    /* 極淺色背景 */
+    padding: 10px 15px;
+    border-radius: 4px;
+    display: inline-block;
+    /* 讓背景寬度隨文字長度縮放 */
+    margin-bottom: 20px;
+}
+
+/* Title 04: 小章節標題，細緻風格 */
+.title-04 {
+    font-size: 46px;
+    font-weight: 700;
+    color: var(--mycolor18);
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.title-04::before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: var(--mycolor13);
+    /* 前綴小方塊裝飾 */
+    margin-right: 10px;
+    border-radius: 2px;
+}
+
+/* Title 05: 極小標題或說明標題，全大寫感 */
+.title-05 {
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--mycolor13);
+    text-transform: uppercase;
+    /* 若為英文則自動大寫 */
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* roller .roller-l .roller-r .roller-t .roller-b */
+.roller {
+    position: relative;
+    overflow: hidden;
+    background-color: #f0f0e8; /* 淺陶土色底 */
+    border-radius: 2px;       /* 銳利的邊角更有現代設計感 */
+    overflow: hidden;
+}
+
+.roller_box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* 使用大膽的日式對比色：翠綠至橙金的漸層 */
+    background: linear-gradient(
+        135deg, 
+        rgba(151, 177, 174, 0.9) 0%,   /* 現代青瓷綠 */
+        rgba(236, 208, 137, 0.85) 100% /* 金琥珀色 */
+    );
+    left: -100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* 增加混合模式，讓內容與背景產生獨特的色調融合 */
+    mix-blend-mode: multiply; 
+    
+    /* 讓過渡更具戲劇性：使用回彈效果 (Back Ease) */
+    transition: left 0.7s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.roller:hover .roller_box {
+    left: 0;
+}
+
+/* 額外點綴：增加一個細微的掃光感 */
+.roller:hover .roller_box::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(255,255,255,0.2), transparent);
+    pointer-events: none;
+}
