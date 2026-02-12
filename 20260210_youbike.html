@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenData練習kyc</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/my CSS.css">
+    <link rel="stylesheet" href="css/table-rwd.css">
+    
+</head>
+<body>
+    <div class="title-01 text-center" id="mytitle">XXX應用不會顯示</div>
+    <div class="container">
+        <table class="table table-rwd">
+            <thead class="table-info">
+                <tr>
+                    <th>站點編號</th>
+                    <th>位置</th>
+                    <th>空車可借</th>
+                    <th>已借出</th>
+                    <th>總數量</th>
+                    <th>更新時間</th>
+                </tr>
+            </thead>
+            <tbody id="mybody">
+                <tr>
+                    <td data-th="站點編號"><span>001</span></td>
+                    <td data-th="位置">
+                        <span><img src="images/brayden-prato-XTti5PmvSE0-unsplash.jpg" width="200px" alt=""></span>
+                    </td>
+                    <td data-th="空車可借"><span>xxxx</span></td>
+                    <td data-th="已借出"><span>1xxxx00</span></td>
+                    <td data-th="總數量"><span>10xx0</span></td>
+                    <td data-th="更新時間">
+                        <span>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX。</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/jquery-4.0.0.js"></script>
+    <script>
+        // 主程式
+        $(function () {
+            $("#mytitle").html("台北市UBIKE即時資訊");
+
+            console.log("hello world!!!");
+
+            //串接opendata
+            $.ajax({
+                type: "GET",
+                url: "js/json/youbike_immediate.json",
+                dataType: "json",
+                success: showdata,
+                error: function () {
+                    console.log("連線錯誤!");
+                }
+            });
+        });
+
+        function showdata(data) {
+            console.log(data);
+
+            $("#mybody").empty();
+            data.forEach(function (item) {
+                // console.log(item.Name);
+                // console.log("地址: " + item.City + item.Town + item.Address);
+                
+                //資料防呆
+                let img = item.PicURL ? item.PicURL : "images/01.jpg" ; //三元運算子
+                let tel = item.Tel ? item.Tel : "未提供電話";
+                let hword = item.HostWords ? item.HostWords : "未提供簡介";
+
+                let strHTML = `<tr>
+                                <td data-th="站點編號"><span>${item.sno}</span></td>
+                                <td data-th="位置">
+                                    <span>${item.ar}</span>
+                                </td>
+                                <td data-th="空車可借"><span>${item.available_rent_bikes}</span></td>
+                                <td data-th="已借出"><span>${item.available_return_bikes}</span></td>
+                                <td data-th="總數量"><span>${item.Quantity}</span></td>
+                                <td data-th="更新時間"><span>${item.updateTime}</span>
+                                </td>
+                            </tr>`;
+                $("#mybody").append(strHTML);
+            });
+        }
+
+    </script>
+    
+</body>
+
+</html>
