@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH6美食清單mine</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/my CSS.css">
+
+
+</head>
+<body>
+    <div class="title-02 text-center">台中美食列表</div>
+        <div class="container">
+            <div class="row" id="myrow">
+                <div class="col12 col-md-6 col-lg-4  ">
+                    <div class="roller">
+                        <div class="roller_box">
+                            <button class="btn-info ">查看更多</button>
+                        </div>
+                        <div style="background-image: url(images/02.jpg);height: 200px;background-position: center center;background-size: cover;border-radius: 2px;"></div>
+                     
+                <div class="h3 text-center fw-800">N50 COFFEE</div>
+                <div class="h5 fw-600">電話:04 12345657</div>
+                <div class="h5 fw-600">地址:台中市南屯區南屯路1號</div>  
+                <p>簡介:有利於註冊行政採用像是行為只能發表無比進攻道德作家小子那種，別人我愛主機走進專題很快，有的可是還在別的，本人家長，支持。</p>                
+                </div></div> 
+            </div>
+        </div>
+    
+    
+    <script src="js/jquery-4.0.0.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(function(){
+            $.ajax({
+                type: "GET",
+                url: "js/json/ODwsvTravelFood.json",
+                dataType: "json",
+                success: showdata,
+                error: function(){
+                    console.log("error-來源錯誤")
+                }
+            });
+        });
+
+        function showdata(data){
+            console.log(data);
+            data.forEach(function(item){
+
+                let img = item.PicURL ? item.PicURL : "images/04.jpg";
+                let tel = item.Tel ? item.Tel : "電話不通";
+                let hwords = item.HostWords ? item.HostWords.substring(0,30) : "未提供簡介";
+
+
+                let strHTML =  `<div class="col12 col-md-6 col-lg-4  ">
+                    <div class="roller">
+                        <div class="roller_box">
+                            <button class="btn-info ">查看更多</button>
+                        </div>
+                        <div style="background-image: url('${img}');height: 200px;background-position: center center;background-size: cover;border-radius: 2px;"></div>
+                     
+                <div class="h3 text-center fw-800">${item.Name}</div>
+                <div class="h5 fw-600">電話:${item.Tel}</div>
+                <div class="h5 fw-600">地址:${item.City}${item.Town}${item.Address}</div>  
+                <p>簡介:${item.HostWords}</p>                
+                </div></div> `;
+                $("#myrow").append(strHTML);
+
+            }
+        )
+        }
+    </script>
+</body>
+</html>
